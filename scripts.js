@@ -1,47 +1,54 @@
-const body = document.querySelector("body")
-const tenis = document.querySelector(".imagem-tenis")
+const body = document.querySelector("body");
+const tenis = document.querySelector(".imagem-tenis");
 const botaoCarrinho = document.querySelector(".botao-carrinho");
 const botoesCores = document.querySelectorAll(".botoes");
 
-function toast (msg, ms =2300){
-    let box = document.querySelector("#toast-box");
-    if (!box){
-        box=document.createElement("div");
-        box.id = "toast-box";
-        box.setAttribute("aria-live", "polite");
-        box.setAttribute("role", "status");
-        document.body.appendChild(box);
-    }
-    const t=document.createElement("div");
-    t.className="toast";
-    t.textContent=msg;
-    box.appendChild(t);
-    setTimeout(() => t.remove(), ms);
-
+function toast(msg, ms = 2300) {
+  let box = document.querySelector("#toast-box");
+  if (!box) {
+    box = document.createElement("div");
+    box.id = "toast-box";
+    box.setAttribute("aria-live", "polite");
+    box.setAttribute("role", "status");
+    document.body.appendChild(box);
+  }
+  const t = document.createElement("div");
+  t.className = "toast";
+  t.textContent = msg;
+  box.appendChild(t);
+  setTimeout(() => t.remove(), ms);
 }
 
-function mudarVisual(cor, imagem){
-    body.style.transition= "background 0.6s ease";
-    body.style.transition=cor;
-    botoesCores.forEach(btn => btn.classList.remove("is-active"));
-    tenis.style.opacity=0;
-    setTimeout(() => {
-        tenis.src = cor;
-        tenis.style.opacity=1;
-    }, 350 );
+function mudarVisual(cor, imagem) {
+  document.body.style.background = cor;
 
+  const img = document.querySelector(".imagem-tenis");
+  if (!img) return;
+
+  img.style.opacity = 0;
+
+  const preload = new Image();
+  preload.onload = () => {
+    img.src = imagem;
+    img.style.opacity = 1;
+  };
+  preload.onerror = () => {
+    console.error("Imagem não encontrada:", imagem);
+    if (typeof toast === "function") toast("😕 Não achei a imagem do tênis.");
+    img.style.opacity = 1;
+  };
+  preload.src = imagem;
 }
 
 botaoCarrinho?.addEventListener("click", () => {
-    toast("Produto adicionado ao Carrinho!");
-
+  toast("Produto adicionado ao Carrinho!");
 });
 
-botoesCores.forEach(btn => {
-    btn.addEventListener("click", () => {
-        botoesCores.forEach(b=>b.classList.remove("is-acttive"));
-        btn.classList.add("is active");
-    });
+botoesCores.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    botoesCores.forEach((b) => b.classList.remove("is-acttive"));
+    btn.classList.add("is active");
+  });
 });
 
 document.addEventListener("keydown", (e) => {
@@ -61,16 +68,17 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-function marcarAtivo(classeCor){
- botoesCores.forEach(btn => {
-   btn.classList.toggle("is-active", btn.classList.contains(classeCor));
- });
+function marcarAtivo(classeCor) {
+  botoesCores.forEach((btn) => {
+    btn.classList.toggle("is-active", btn.classList.contains(classeCor));
+  });
 }
 
 if (typeof window.mudarVisual !== "function") {
-  const _mudarVisualOriginal = typeof mudarVisual === "function" ? mudarVisual : null;
+  const _mudarVisualOriginal =
+    typeof mudarVisual === "function" ? mudarVisual : null;
 
-  window.mudarVisual = function(cor, imagem){
+  window.mudarVisual = function (cor, imagem) {
     try {
       console.log("[mudarVisual] chamada com:", { cor, imagem });
 
@@ -86,11 +94,14 @@ if (typeof window.mudarVisual !== "function") {
         }
 
         const preload = new Image();
-        preload.onload = () => { img.src = imagem; };
+        preload.onload = () => {
+          img.src = imagem;
+        };
         preload.onerror = () => {
           console.error("Imagem não encontrada:", imagem);
-  
-          if (typeof toast === "function") toast("😕 Não achei a imagem do tênis.");
+
+          if (typeof toast === "function")
+            toast("😕 Não achei a imagem do tênis.");
         };
         preload.src = imagem;
       }

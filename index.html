@@ -1,48 +1,79 @@
-<!DOCTYPE html> <!--  serve pra falar a versão do HTML / 5 -->
-<html lang="pt-br"> <!-- Dentro fica meu site-->
+<!DOCTYPE html>
+<!--  serve pra falar a versão do HTML / 5 -->
+<html lang="pt-br">
+  <!-- Dentro fica meu site-->
 
-<head> <!-- Configuirações abrindo-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <!-- Configuirações abrindo-->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NIKE DevClub</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
-</head> <!-- Configurações do meu site fechando-->
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <!-- Configurações do meu site fechando-->
 
-<body>
-    <img src="img/logo.png" class="logo" alt="Logo Nike"/>
+  <body>
+    <img src="img/logo.png" class="logo" alt="Logo Nike" />
     <div class="caixa-principal">
-        <div class="caixa-texto">
-            <h4>R$ 799,00</h4>
+      <div class="caixa-texto">
+        <h1>Nike Air Zoom</h1>
 
-            <h1> Nike Air Zoom</h1> 
+        <h4 class="preco">R$ 799,00</h4>
 
-            <p>
-                Uma passada elástica para qualquer corrida, a sensação familiar e perfeita do Peg retorna para ajudá-lo
-                a atingir seus objetivos. Esta versão tem a mesma capacidade de resposta e suporte neutro que você
-                adora, mas com melhor conforto nas áreas sensíveis do seu pé, como o arco e os dedos.
-            </p>
+        <p>
+          Uma passada elástica para qualquer corrida, a sensação familiar e
+          perfeita do Peg retorna para ajudá-lo a atingir seus objetivos. Esta
+          versão tem a mesma capacidade de resposta e suporte neutro que você
+          adora, mas com melhor conforto nas áreas sensíveis do seu pé, como o
+          arco e os dedos.
+        </p>
 
-            <a class="botao-carrinho" href="javascript:void(0)" aria-label="Adicionar produto ao carrinho">  <!-- Para adicionar um link o a é de ancora-->
-                Adicionar ao Carrinho
-            </a>
-        </div>
-        <div class="caixa-imagem">
-
-            <img src="img/nike1.png" class="imagem-tenis">
-        </div>
+        <a
+          class="botao-carrinho"
+          href="javascript:void(0)"
+          aria-label="Adicionar produto ao carrinho"
+        >
+          <!-- Para adicionar um link o a é de ancora-->
+          Adicionar ao Carrinho
+        </a>
+      </div>
+      <div class="caixa-imagem">
+        <img src="img/nike1.png" class="imagem-tenis" />
+      </div>
     </div>
 
-    <div class="caixa-botoes" role="group" aria-label="Opções de cores do tênis">
-        <div onclick="mudarVisual('#ccee66', './img/nike1.png')" class="botoes verde" aria-label="Cor verde" title="Verde"></div>
-        <div onclick="mudarVisual('#ff9eb5', './img/nike3.png')" class="botoes rosa" aria-label="Cor rosa" title="rosa"></div>
-        <div onclick="mudarVisual('#5d8cce', './img/nike2.png')" class="botoes azul" aria-label="Cor azul" title="azul"></div>
+    <div
+      class="caixa-botoes"
+      role="group"
+      aria-label="Opções de cores do tênis"
+    >
+      <div
+        onclick="mudarVisual('#ccee66', './img/nike1.png')"
+        class="botoes verde"
+        aria-label="Cor verde"
+        title="Verde"
+      ></div>
+      <div
+        onclick="mudarVisual('#ff9eb5', './img/nike3.png')"
+        class="botoes rosa"
+        aria-label="Cor rosa"
+        title="rosa"
+      ></div>
+      <div
+        onclick="mudarVisual('#5d8cce', './img/nike2.png')"
+        class="botoes azul"
+        aria-label="Cor azul"
+        title="azul"
+      ></div>
     </div>
-</body> <!-- corpo o meu site -->
+  </body>
+  <!-- corpo o meu site -->
 
-<script src="scripts.js"></script>
-
+  <script src="scripts.js"></script>
 </html>
